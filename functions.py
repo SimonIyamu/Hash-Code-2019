@@ -10,7 +10,7 @@ def getTagDict(Photos):
                 x = tagDict[tag]
                 x.append(photo)
                 tagDict[tag] = x
-                #tagDict[tag] = tagDict[tag].append(photo)
+                # tagDict[tag] = tagDict[tag].append(photo)
             else:
                 tagDict[tag] = [photo]
     return tagDict
@@ -60,8 +60,15 @@ def FindinngVH(photo1, photo2, verticalphoto):
     mymax = 0
     myset = set()
     for photo in verticalphoto:
+
+
+<< << << < HEAD
         myset.join(photo1.tags)
         myset.join(photo.tags)
+== == == =
+        myset.union(photo1.tags)
+        myset.union(photo.tags)
+>>>>>> > cbe9ca91df6e658ede07bb60542524610494635b
         sample = getScore(myset, photo2)
         if(sample > mymax):
             mymax = sample
