@@ -28,10 +28,6 @@ def getScore(Slide1, Slide2):
     list.append(len(x))
 
     return min(list)
-<<<<<<< HEAD
-
-=======
-
 
 def PicComboScore(tagDict, photo_list):
     score = {}
@@ -57,9 +53,8 @@ def removePhoto(tagDict, vlist, photo):
     if photo.orientation == "V":
         vlist.remove(photo)
 
-<<<<<<< HEAD
     return (tagDict,vlist)
->>>>>>> e408273540e3285600875982ca9b0bdae0c109a7
+
  def FindinngVH(photo1,photo2,verticalphoto):
      mymax=0
      myset=set()
@@ -72,6 +67,3 @@ def removePhoto(tagDict, vlist, photo):
              chosenphoto=photo
         myset=set()
     return chosenphoto
-=======
-    return (tagDict, vlist)
->>>>>>> 83d656a6c01d05305022b5a6a2cd288ea3708c1b
