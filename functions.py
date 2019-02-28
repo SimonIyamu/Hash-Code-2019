@@ -28,3 +28,15 @@ def getScore(Slide1, Slide2):
     list.append(len(x))
 
     return min(list)
+ def FindinngVH(photo1,photo2,verticalphoto):
+     mymax=0
+     myset=set()
+     for photo in verticalphoto:
+         myset.join(photo1.tags)
+         myset.join(photo.tags)
+         sample=getScore(myset,photo2)
+         if(sample>mymax):
+             mymax=sample
+             chosenphoto=photo
+        myset=set()
+    return chosenphoto
