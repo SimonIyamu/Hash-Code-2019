@@ -28,6 +28,22 @@ def getScore(Slide1, Slide2):
     list.append(len(x))
 
     return min(list)
+<<<<<<< HEAD
+
+=======
+
+"""
+    removes a photo from the tag dictionary and maybe vertical list
+"""
+def removePhoto(tagDict,vlist,photo):
+    for tag in photo.tags:
+        tagDict[tag].remove(photo)
+
+    if photo.orientation == "V":
+        vlist.remove(photo)
+
+    return (tagDict,vlist)
+>>>>>>> e408273540e3285600875982ca9b0bdae0c109a7
  def FindinngVH(photo1,photo2,verticalphoto):
      mymax=0
      myset=set()
