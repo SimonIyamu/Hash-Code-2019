@@ -55,7 +55,7 @@ def removePhoto(tagDict, vlist, photo):
 
     return (tagDict,vlist)
 
- def FindinngVH(photo1,photo2,verticalphoto):
+def FindinngVH(photo1,photo2,verticalphoto):
     mymax=0
     myset=set()
     for photo in verticalphoto:
