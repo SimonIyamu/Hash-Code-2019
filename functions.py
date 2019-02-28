@@ -28,3 +28,10 @@ def getScore(Slide1, Slide2):
     list.append(len(x))
 
     return min(list)
+
+"""
+    removes a photo from the tag dictionary
+"""
+def removePhoto(tagDict,photo):
+    for tag in photo.tags:
+        tagDict[tag].remove(photo)
