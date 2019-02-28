@@ -45,6 +45,7 @@ def SlideComboScore(slide, tagDict):
     removes a photo from the tag dictionary and maybe vertical list
 """
 
+
 def removePhoto(tagDict, vlist, photo):
     for tag in photo.tags:
         tagDict[tag].remove(photo)
@@ -61,18 +62,22 @@ def FindinngVH(photo1, slide, verticalphoto):
     for photo in verticalphoto:
         myset = myset.union(photo1.tags)
         myset = myset.union(photo.tags)
-        sample = getScore(myset, slide)
+        temp_slide = classes.slide([photo1, photo], 21)
+        sample = getScore(temp_slide, slide)
         if(sample > mymax):
             mymax = sample
             chosenphoto = photo
     myset = set()
     return chosenphoto
 
+
 """
 
 """
-def getSlideShow(tagDict,photo_list,vlist):
-    
+
+
+def getSlideShow(tagDict, photo_list, vlist):
+
     # Pick a random horizontal ( TODO better choice )
 
     for photo in photo_list:
@@ -80,9 +85,8 @@ def getSlideShow(tagDict,photo_list,vlist):
             firstPhoto = photo
             break
 
-    slide = classes.slide(firstPhoto,0)
+    slide = classes.slide(firstPhoto, 0)
 
     while something:
-        
 
-    #return slideShow
+        # return slideShow
