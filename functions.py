@@ -55,13 +55,13 @@ def removePhoto(tagDict, vlist, photo):
     return (tagDict, vlist)
 
 
-def FindinngVH(photo1, photo2, verticalphoto):
+def FindinngVH(photo1, slide, verticalphoto):
     mymax = 0
     myset = set()
     for photo in verticalphoto:
-        myset.union(photo1.tags)
-        myset.union(photo.tags)
-        sample = getScore(myset, photo2)
+        myset = myset.union(photo1.tags)
+        myset = myset.union(photo.tags)
+        sample = getScore(myset, slide)
         if(sample > mymax):
             mymax = sample
             chosenphoto = photo
