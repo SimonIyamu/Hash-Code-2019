@@ -14,6 +14,7 @@ for i in range(5):
         N, photo_list = Read.ReadInput("e_shiny_selfies.txt")
 
     tagDict = functions.getTagDict(photo_list)
+    scores = functions.PicComboScore(tagDict, photo_list)
 
     # for tag in tagDict:
     #     print tag,

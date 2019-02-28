@@ -28,3 +28,15 @@ def getScore(Slide1, Slide2):
     list.append(len(x))
 
     return min(list)
+
+
+def PicComboScore(tagDict, photo_list):
+    score = {}
+    for tag in tagDict.keys():
+        for i in range(len(tagDict[tag])):
+            for j in range(i+1, len(tagDict[tag])):
+                pi = photo_list[i]
+                pj = photo_list[j]
+                if frozenset({pi, pj}) not in score:
+                    score[frozenset({pi, pj})] = getScore(pi, pj)
+    return score
