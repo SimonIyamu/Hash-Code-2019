@@ -40,3 +40,18 @@ def PicComboScore(tagDict, photo_list):
                 if frozenset({pi, pj}) not in score:
                     score[frozenset({pi, pj})] = getScore(pi, pj)
     return score
+
+
+"""
+    removes a photo from the tag dictionary and maybe vertical list
+"""
+
+
+def removePhoto(tagDict, vlist, photo):
+    for tag in photo.tags:
+        tagDict[tag].remove(photo)
+
+    if photo.orientation == "V":
+        vlist.remove(photo)
+
+    return (tagDict, vlist)

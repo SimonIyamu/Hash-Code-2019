@@ -13,7 +13,10 @@ class slide:
             self.type = "V"
         else:
             self.type = "H"
+        self.picids = []
         for Picture in Pictures:
+            self.picids.append(Picture.ID)
             for tag in Picture:
                 self.tags.add(tag)
+
         self.id = id
