@@ -10,7 +10,7 @@ def getTagDict(Photos):
                 x = tagDict[tag]
                 x.append(photo)
                 tagDict[tag] = x
-                #tagDict[tag] = tagDict[tag].append(photo)
+                # tagDict[tag] = tagDict[tag].append(photo)
             else:
                 tagDict[tag] = [photo]
     return tagDict
@@ -28,6 +28,7 @@ def getScore(Slide1, Slide2):
     list.append(len(x))
 
     return min(list)
+
 
 def PicComboScore(tagDict, photo_list):
     score = {}
@@ -53,17 +54,18 @@ def removePhoto(tagDict, vlist, photo):
     if photo.orientation == "V":
         vlist.remove(photo)
 
-    return (tagDict,vlist)
+    return (tagDict, vlist)
 
- def FindinngVH(photo1,photo2,verticalphoto):
-     mymax=0
-     myset=set()
-     for photo in verticalphoto:
-         myset.join(photo1.tags)
-         myset.join(photo.tags)
-         sample=getScore(myset,photo2)
-         if(sample>mymax):
-             mymax=sample
-             chosenphoto=photo
-        myset=set()
+
+def FindinngVH(photo1, photo2, verticalphoto):
+    mymax = 0
+    myset = set()
+    for photo in verticalphoto:
+        myset.join(photo1.tags)
+        myset.join(photo.tags)
+        sample = getScore(myset, photo2)
+        if(sample > mymax):
+            mymax = sample
+            chosenphoto = photo
+        myset = set()
     return chosenphoto
