@@ -4,6 +4,7 @@ import heapq
  Data structures
 """
 
+
 class PriorityQueue:
     """
       Implements a priority queue data structure. Each inserted item
@@ -15,7 +16,8 @@ class PriorityQueue:
       of an item.  However, you may insert the same item multiple times with
       different priorities.
     """
-    def  __init__(self):
+
+    def __init__(self):
         self.heap = []
         self.count = 0
 
@@ -31,6 +33,7 @@ class PriorityQueue:
     def isEmpty(self):
         return len(self.heap) == 0
 
+
 class PriorityQueueWithFunction(PriorityQueue):
     """
     Implements a priority queue with the same push/pop signature of the
@@ -38,7 +41,8 @@ class PriorityQueueWithFunction(PriorityQueue):
     those two classes. The caller has to provide a priority function, which
     extracts each item's priority.
     """
-    def  __init__(self, priorityFunction):
+
+    def __init__(self, priorityFunction):
         "priorityFunction (item) -> priority"
         self.priorityFunction = priorityFunction      # store the priority function
         PriorityQueue.__init__(self)        # super-class initializer
@@ -46,4 +50,3 @@ class PriorityQueueWithFunction(PriorityQueue):
     def push(self, item):
         "Adds an item to the queue with priority from the priority function"
         PriorityQueue.push(self, item, self.priorityFunction(item))
-
