@@ -21,4 +21,4 @@ def ReadInput(filename):
     return (N, photo_list)
 
 
-print ReadInput("a_example.txt")
+#print ReadInput("a_example.txt")
