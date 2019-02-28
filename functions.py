@@ -30,21 +30,20 @@ def getScore(Slide1, Slide2):
     return min(list)
 
 
-def PicComboScore(tagDict, photo_list):
-    score = {}
-    for tag in tagDict.keys():
-        for i in range(len(tagDict[tag])):
-            for j in range(i+1, len(tagDict[tag])):
-                pi = photo_list[i]
-                pj = photo_list[j]
-                if frozenset({pi, pj}) not in score:
-                    score[frozenset({pi, pj})] = getScore(pi, pj)
-    return score
-
-
 """
     removes a photo from the tag dictionary and maybe vertical list
 """
+
+
+def SlideComboScore(slide, tagDict):
+    max_score = -float('Inf')
+    for tag in slide.tags:
+        for photo in tagDict[tag]:
+            combo_score = getScore(slide, photo)
+            if combo_score > max_score:
+                max_score = combo_score
+                bestPhoto = photo
+    return bestPhoto
 
 
 def removePhoto(tagDict, vlist, photo):
