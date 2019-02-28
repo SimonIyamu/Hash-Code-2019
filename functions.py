@@ -30,11 +30,6 @@ def getScore(Slide1, Slide2):
     return min(list)
 
 
-"""
-    removes a photo from the tag dictionary and maybe vertical list
-"""
-
-
 def SlideComboScore(slide, tagDict):
     max_score = -float('Inf')
     for tag in slide.tags:
@@ -45,6 +40,10 @@ def SlideComboScore(slide, tagDict):
                 bestPhoto = photo
     return bestPhoto
 
+
+"""
+    removes a photo from the tag dictionary and maybe vertical list
+"""
 
 def removePhoto(tagDict, vlist, photo):
     for tag in photo.tags:
@@ -68,3 +67,22 @@ def FindinngVH(photo1, slide, verticalphoto):
             chosenphoto = photo
     myset = set()
     return chosenphoto
+
+"""
+
+"""
+def getSlideShow(tagDict,photo_list,vlist):
+    
+    # Pick a random horizontal ( TODO better choice )
+
+    for photo in photo_list:
+        if photo.orientation == "H":
+            firstPhoto = photo
+            break
+
+    slide = classes.slide(firstPhoto,0)
+
+    while something:
+        
+
+    #return slideShow

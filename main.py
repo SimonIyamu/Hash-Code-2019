@@ -17,6 +17,11 @@ for i in range(5):
 
     tagDict = functions.getTagDict(photo_list)
     scores = functions.PicComboScore(tagDict, photo_list)
+<<<<<<< HEAD
+
+    functions.getSlideShow(tagDict,photo_list,vertical_list)
+=======
+>>>>>>> dc007cdc7123c05ce3dccb1cd607113d8f47f2cd
 
     # for tag in tagDict:
     #     print tag,
