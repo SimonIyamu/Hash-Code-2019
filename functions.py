@@ -30,8 +30,13 @@ def getScore(Slide1, Slide2):
     return min(list)
 
 """
-    removes a photo from the tag dictionary
+    removes a photo from the tag dictionary and maybe vertical list
 """
-def removePhoto(tagDict,photo):
+def removePhoto(tagDict,vlist,photo):
     for tag in photo.tags:
         tagDict[tag].remove(photo)
+
+    if photo.orientation == "V":
+        vlist.remove(photo)
+
+    return (tagDict,vlist)
