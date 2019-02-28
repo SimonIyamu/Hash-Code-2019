@@ -16,7 +16,7 @@ class slide:
         self.picids = []
         for Picture in Pictures:
             self.picids.append(Picture.ID)
-            for tag in Picture:
+            for tag in Picture.tags:
                 self.tags.add(tag)
 
         self.id = id
