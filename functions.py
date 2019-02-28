@@ -91,7 +91,7 @@ def getSlideShow(tagDict,photo_list,vlist):
         else:
             # The photo is vertical
             bestFit = FindinngVH(bestPhoto,slide,vlist)
-            nextSlide = classes.slide([bestPhoto bestFit],slideID)
+            nextSlide = classes.slide([bestPhoto,bestFit],slideID)
             removePhoto(tagDict,vlist,bestFit)
         removePhoto(tagDict,vlist,bestPhoto)
 

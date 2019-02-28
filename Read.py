@@ -13,8 +13,8 @@ def ReadInput(filename):
         temp_list = set()
         orientation = line[0]
         length = int(line[1])
-        if(orientation == "V"):
-            verticalphoto.append(j)
+        #if(orientation == "V"):
+            #verticalphoto.append(j)
         for i in range(2, len(line)):
             temp_list.add(line[i])
             x = classes.picture(j, temp_list, orientation, length)
