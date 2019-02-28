@@ -31,11 +31,13 @@ def getScore(Slide1, Slide2):
 
 
 def SlideComboScore(slide, tagDict):
-    max_score = -float('Inf')
+    bestPhoto = None
+    max_score = -1
     for tag in slide.tags:
         for photo in tagDict[tag]:
             combo_score = getScore(slide, photo)
             if combo_score > max_score:
+                print "Nigga"
                 max_score = combo_score
                 bestPhoto = photo
     return bestPhoto
@@ -85,8 +87,24 @@ def getSlideShow(tagDict, photo_list, vlist):
             firstPhoto = photo
             break
 
-    slide = classes.slide(firstPhoto, 0)
+    slide = classes.slide([firstPhoto], 0)
 
-    while something:
+    slideShow = []
+    slideID = 1
+    while len(photo_list) > 1:
+        bestPhoto = SlideComboScore(slide, tagDict)
+        if bestPhoto.orientation == "H":
+            nextSlide = classes.slide([bestPhoto], slideID)
+        else:
+            # The photo is vertical
+            bestFit = FindinngVH(bestPhoto, slide, vlist)
+            nextSlide = classes.slide([bestPhoto, bestFit], slideID)
+            removePhoto(tagDict, vlist, bestFit)
+        removePhoto(tagDict, vlist, bestPhoto)
 
-        # return slideShow
+        slideShow.append(nextSlide)
+        slideID += 1
+
+        slide = nextSlide
+
+    return slideShow
