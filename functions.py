@@ -69,3 +69,22 @@ def FindinngVH(photo1, photo2, verticalphoto):
             chosenphoto = photo
     myset = set()
     return chosenphoto
+
+"""
+
+"""
+def getSlideShow(tagDict,photo_list,vlist):
+    
+    # Pick a random horizontal ( TODO better choice )
+
+    for photo in photo_list:
+        if photo.orientation == "H":
+            firstPhoto = photo
+            break
+
+    slide = classes.slide(firstPhoto,0)
+
+    while something:
+        
+
+    #return slideShow

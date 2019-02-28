@@ -16,7 +16,9 @@ for i in range(5):
         N, photo_list, vertical_list = Read.ReadInput("e_shiny_selfies.txt")
 
     tagDict = functions.getTagDict(photo_list)
-    #scores = functions.PicComboScore(tagDict, photo_list)
+    scores = functions.PicComboScore(tagDict, photo_list)
+
+    functions.getSlideShow(tagDict,photo_list,vertical_list)
 
     # for tag in tagDict:
     #     print tag,
@@ -24,6 +26,6 @@ for i in range(5):
     #         print photo.ID, ",",
     #     print ""
 
-    print(len(vertical_list))
+    print(len(tagDict))
     print "output"+str(i)+".txt"
     #print tagDict
