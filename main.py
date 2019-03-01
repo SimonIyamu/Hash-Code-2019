@@ -2,25 +2,24 @@ import functions
 import Output
 import Read
 
-for i in range(5):
+for i in range(3):
     if i == 0:
-        N, photo_list, vertical_list = Read.ReadInput("a_example.txt")
+        N, photo_dict, vertical_dict = Read.ReadInput("a_example.txt")
     elif i == 1:
-        continue
-        N, photo_list, vertical_list = Read.ReadInput(
+        N, photo_dict, vertical_dict = Read.ReadInput(
             "b_lovely_landscapes.txt")
     elif i == 2:
-        N, photo_list, vertical_list = Read.ReadInput(
+        N, photo_dict, vertical_dict = Read.ReadInput(
             "c_memorable_moments.txt")
     elif i == 3:
         continue
-        N, photo_list, vertical_list = Read.ReadInput("d_pet_pictures.txt")
+        N, photo_dict, vertical_dict = Read.ReadInput("d_pet_pictures.txt")
     elif i == 4:
-        N, photo_list, vertical_list = Read.ReadInput("e_shiny_selfies.txt")
+        N, photo_dict, vertical_dict = Read.ReadInput("e_shiny_selfies.txt")
 
-    tagDict = functions.getTagDict(photo_list)
+    tagDict = functions.getTagDict(photo_dict)
 
-    slideShow = functions.getSlideShow(tagDict, photo_list, vertical_list)
+    slideShow = functions.getSlideShow(tagDict, photo_dict, vertical_dict)
 
     filename = "output"+str(i)+".txt"
     print filename

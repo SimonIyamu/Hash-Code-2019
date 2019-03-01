@@ -5,6 +5,23 @@ import heapq
 """
 
 
+class EnhDictionary:
+    def __init__(self):
+        self.dic = {}
+        self.count = 0
+
+    def add(self, key, val):
+        self.count += 1
+        self.dic[key] = val
+
+    def dlt(self, key):
+        self.count -= 1
+        del self.dic[key]
+
+    def get(self, key):
+        return self.dic[key]
+
+
 class PriorityQueue:
     """
       Implements a priority queue data structure. Each inserted item
