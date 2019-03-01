@@ -32,12 +32,11 @@ def getScore(Slide1, Slide2):
 
 def SlideComboScore(slide, tagDict):
     bestPhoto = None
-    max_score = -1
+    max_score = -float('Inf')
     for tag in slide.tags:
         for photo in tagDict[tag]:
             combo_score = getScore(slide, photo)
             if combo_score > max_score:
-                print "Nigga"
                 max_score = combo_score
                 bestPhoto = photo
     return bestPhoto
@@ -48,28 +47,30 @@ def SlideComboScore(slide, tagDict):
 """
 
 
-def removePhoto(tagDict, vlist, photo):
+def removePhoto(tagDict, vlist, plist, photo):
+    # print "REMOVE", photo
     for tag in photo.tags:
+        # print tag, tagDict[tag]
         tagDict[tag].remove(photo)
 
+    plist.remove(photo)
     if photo.orientation == "V":
         vlist.remove(photo)
 
     return (tagDict, vlist)
 
 
-def FindinngVH(photo1, slide, verticalphoto):
-    mymax = 0
-    myset = set()
-    for photo in verticalphoto:
-        myset = myset.union(photo1.tags)
-        myset = myset.union(photo.tags)
-        temp_slide = classes.slide([photo1, photo], 21)
-        sample = getScore(temp_slide, slide)
-        if(sample > mymax):
-            mymax = sample
-            chosenphoto = photo
-    myset = set()
+def FindinngVH(photo1, slide, tagDict):
+    chosenphoto = None
+    mymax = -float('Inf')
+    for tag in slide.tags:
+        for photo in tagDict[tag]:
+            if photo.orientation == "V":
+                temp_slide = classes.slide([photo1, photo], 21)
+                sample = getScore(temp_slide, slide)
+                if(sample > mymax):
+                    mymax = sample
+                    chosenphoto = photo
     return chosenphoto
 
 
@@ -82,27 +83,48 @@ def getSlideShow(tagDict, photo_list, vlist):
 
     # Pick a random horizontal ( TODO better choice )
 
-    for photo in photo_list:
-        if photo.orientation == "H":
-            firstPhoto = photo
-            break
+    if len(vlist) > 1:
+        firstPhoto = photo_list[0]
+    else:
+        for photo in photo_list:
+            if photo.orientation == "H":
+                firstPhoto = photo
+                break
 
+    usedPhotos = 1
+    removePhoto(tagDict, vlist, photo_list, firstPhoto)
     slide = classes.slide([firstPhoto], 0)
 
-    slideShow = []
+    slideShow = [slide]
     slideID = 1
     while len(photo_list) > 1:
+        # print "slideShow=", slideShow
         bestPhoto = SlideComboScore(slide, tagDict)
+        # print "bestPhoto is", bestPhoto
+        if bestPhoto is None:
+            if len(vlist) > 1:
+                bestPhoto = photo_list[0]
+            else:
+                for photo in photo_list:
+                    if photo.orientation == "H":
+                        bestPhoto = photo
+                        break
+        removePhoto(tagDict, vlist, photo_list, bestPhoto)
+
         if bestPhoto.orientation == "H":
             nextSlide = classes.slide([bestPhoto], slideID)
+            usedPhotos += 1
         else:
             # The photo is vertical
-            bestFit = FindinngVH(bestPhoto, slide, vlist)
+            bestFit = FindinngVH(bestPhoto, slide, tagDict)
+            if bestFit is None:
+                bestFit = vlist[0]
             nextSlide = classes.slide([bestPhoto, bestFit], slideID)
-            removePhoto(tagDict, vlist, bestFit)
-        removePhoto(tagDict, vlist, bestPhoto)
+            removePhoto(tagDict, vlist, photo_list, bestFit)
+            usedPhotos += 2
 
         slideShow.append(nextSlide)
+        print usedPhotos
         slideID += 1
 
         slide = nextSlide
